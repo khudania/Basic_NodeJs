@@ -1,7 +1,17 @@
 const http = require('http');
 
-function rqListner() {
+// function rqListner(req, res) {
+//     console.log('Hello')
+// }
 
-}
+// http.createServer(rqListner);
 
-http.createServer();
+// http.createServer(function(req, res) {
+
+// });
+
+const server = http.createServer((req, res) => {
+    console.log(req);
+})
+
+server.listen(3000);

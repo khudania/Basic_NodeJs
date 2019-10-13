@@ -1,10 +1,38 @@
-// const http = require('http')
 const express = require('express')
 const bodyParser = require('body-parser')
 
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }))
+
+app.use('/add-product', (req, res, next) => {
+    res.send('<form action="/product" method="POST"><input type="text" name="title"><button type="submit">add product</button></form>')
+})
+
+app.post('/product', (req, res, next) => {
+    console.log(req.body)
+    res.redirect('/')
+})
+
+app.use('/', (req, res, next) => {
+    res.send('<h1>Hello From Express</h1>')
+})
+
+app.listen(3000);
+
+
+
+
+
+// ------------------------------------------------------------------
+
+// const http = require('http')
+// const express = require('express')
+// const bodyParser = require('body-parser')
+
+// const app = express()
+
+// app.use(bodyParser.urlencoded({ extended: false }))
 
 // app.use((req, res, next) => {
 //     console.log('In middleware')
@@ -16,28 +44,28 @@ app.use(bodyParser.urlencoded({ extended: false }))
 //     next()
 // })
 
-app.use('/add-product', (req, res, next) => {
+// app.use('/add-product', (req, res, next) => {
     // console.log('In middleware')
-    res.send('<form action="/product" method="POST"><input type="text" name="title"><button type="submit">add product</button></form>')
-})
+   // res.send('<form action="/product" method="POST"><input type="text" name="title"><button type="submit">add product</button></form>')
+// })
 
-app.use('/product', (req, res, next) => {
-    console.log(req.body)
-    res.redirect('/')
-})
+// app.post('/product', (req, res, next) => {
+//     console.log(req.body)
+//     res.redirect('/')
+// })
 
-app.use('/', (req, res, next) => {
+// app.use('/', (req, res, next) => {
     // console.log('In middleware')
-    res.send('<h1>Hello From Express</h1>')
-})
+//     res.send('<h1>Hello From Express</h1>')
+// })
 
-app.listen(3000);
+// app.listen(3000);
 
 // const server = http.createServer(app)
 // server.listen(3000)
 
 
-
+// ---------------------------------------------------------------
 
 // const http = require('http');
 
